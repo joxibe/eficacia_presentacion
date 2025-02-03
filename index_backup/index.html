@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Eficacia Colombia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #005FA0;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            background: #005FA0;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background: #005FA0;
+            color: white;
+        }
+
+        .main-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-overlay {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #005FA0;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            color: #005FA0;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fadeIn 1s;
+            margin-top: 80px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .benefit-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .benefit-card {
+        flex: 50%;
+        width: 300px;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px;
+        cursor: pointer;
+        background: #E6F7FD;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .benefit-card h3 {
+        margin: 0;
+        text-align: center;
+    }
+
+    .benefit-card:hover {
+        background: #005FA0;
+        color: white;
+    }
+
+    .benefit-card.active {
+        width: 100%;
+        max-width: 400px;
+        background: #005FA0;
+        color: white;
+    }
+
+    .benefit-details {
+        display: none;
+        margin-top: 15px;
+        color: white;
+        font-size: 0.9rem;
+    }
+
+    .benefit-card.active .benefit-details {
+        display: block;
+    }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll("nav a");
+            const sections = document.querySelectorAll("section");
+
+            navLinks.forEach((link, index) => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    navLinks.forEach(link => link.classList.remove("active"));
+                    link.classList.add("active");
+
+                    sections.forEach(section => section.classList.remove("active"));
+                    sections[index].classList.add("active");
+                });
+            });
+
+            const benefitCards = document.querySelectorAll(".benefit-card");
+
+            benefitCards.forEach(card => {
+                card.addEventListener("click", () => {
+                    benefitCards.forEach(card => card.classList.remove("active"));
+                    card.classList.add("active");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="./eficacia_logo.png" alt="Logo Eficacia">
+        <nav>
+            <a href="#resumen" class="active">Resumen</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#oferta">Oferta</a>
+            <a href="#siguiente">A seguir</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="image-container">
+            <img src="./eficacia_fondo.png" alt="Imagen Ejemplo">
+            <div class="info-overlay">
+                <section class="active">
+                    <h2>Resumen</h2>
+                    <br>
+                    <p>Eficacia Colombia está interesado en implementar una plataforma de aprendizaje que permita mantener a su equipo de desarrolladores a la vanguardia en áreas como backend, frontend, inteligencia artificial, algoritmos y metodologías ágiles. Esto contribuirá a ofrecer un mejor servicio a sus clientes.</p>
+                    <br>
+                    <p>Udemy Business ofrece acceso ilimitado a más de 25,000 cursos (incluyendo 2,500 en español nativo), manteniendo el contenido actualizado y relevante. Además, permite crear planes de capacitación personalizados, evaluar el uso de la plataforma con informes detallados, asignar contenido con fechas límite y cargar material propio para centralizar y optimizar las iniciativas de formación.</p>
+                </section>
+                <section>
+                    <h2>Beneficios</h2>
+                    <br>
+                    <div class="benefit-card-container">
+                        <div class="benefit-card">
+                            <h3>Contenido ágil</h3>
+                            <div class="benefit-details">
+                                <p>Acceso a más de 25,000 cursos (+2,500 en español nativo) con actualizaciones constantes (82% renovado en los últimos 2 años).
+                                    Cobertura de temas emergentes como tecnologías de código abierto.
+                                </p>
+                                <br>
+                                <p><strong>Impacto:</strong> Incrementa el desempeño y compromiso de los empleados, mejora la retención de talento, optimiza la productividad y fomenta el aprendizaje en tendencias emergentes y herramientas actualizadas.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Capacitación personalizada</h3>
+                            <div class="benefit-details">
+                                <p>Posibilidad de diseñar rutas de aprendizaje específicas combinando enlaces externos, cursos propios y contenido de Udemy.
+                                    Aplicable a la incorporación de nuevos empleados, planificación de sucesión y capacitación basada en roles o niveles de experiencia.
+                                </p>
+                                <br>
+                                <p><strong>Impacto:</strong> Mejora la experiencia de inducción, incrementa el compromiso, reduce tiempos de adaptación y agiliza proyectos.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Carga de contenido</h3>
+                            <div class="benefit-details">
+                                <p>La plataforma permite subir contenido personalizado como grabaciones de capacitaciones en vivo o manuales específicos de la empresa.</p>
+                                <br>
+                                <p><strong>Impacto:</strong>  Mejora la preparación del personal, facilita la comunicación interna y ahorra tiempo en la gestión de conocimiento.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Funcionalidades administrativas</h3>
+                            <div class="benefit-details">
+                                <p>Informes detallados, asignación de contenido con fechas límite y administración de grupos por área.
+                                    Creación de subadministradores para el seguimiento de grupos específicos.
+                                </p>
+                                <br>
+                                <p><strong>Impacto:</strong> Incrementa la productividad, identifica brechas de manera ágil, apoya la continuidad del negocio y optimiza la gestión de proyectos.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Preparación para certificados</h3>
+                            <div class="benefit-details">
+                                <p>Contenido para obtener certificaciones de proveedores como AWS, CompTIA, entre otros.</p>
+                                <br>
+                                <p><strong>Impacto:</strong> Facilita el desarrollo profesional y el crecimiento de carrera de los empleados.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Acompañamiento estratégico</h3>
+                            <div class="benefit-details">
+                                <p>Un gerente de éxito asignado en español trabajará de la mano con la empresa desde el inicio.
+                                    Ayuda con el lanzamiento, definición de objetivos, métricas de éxito y mejores prácticas para maximizar el uso de la plataforma.
+                                    (a partir de 100 usuarios):
+                                </p>
+                                <br>
+                                <p><strong>Impacto:</strong> Mejora la implementación y asegura el éxito del proyecto.</p>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                    <section>
+                        <h2>Oferta</h2>
+                        <br>
+                        <p><strong>Precio:</strong>  Oferta especial para Eficacia Colombia (válida hasta fin de febrero):</p>
+                        <p>30 usuarios por $252 USD/persona/año Total: $36,245 (acuerdo de 2 años, pago semestral).</p>
+                        <p>30 usuarios por $232 USD/persona/año Total: $33.224 (acuerdo de 3 años, pago semestral).</p>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>A seguir</h2>
+                        <br>
+                            <p><strong>Equipo Udemy: </strong>compartir resumen y habilitar acceso demo.</p>
+                            <p><strong>Equipo Eficacia:</strong> presentar propuesta con alta gerencia.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Eficacia Colombia - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
