@@ -44,6 +44,14 @@ nav a:hover, nav a.active {
     transform: scale(1.05);
 }
 
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #eeeeee;
+}
+
+
 .main-content {
     height: 100vh;
     display: flex;
@@ -95,13 +103,8 @@ section.active {
     margin-top: 100px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .main-benefit-card {
-    width: 230px;
+    width: 200px;
     margin: 20px auto;
     padding-top: 10px;
     text-align: center;
@@ -114,19 +117,9 @@ section.active {
 }
 
 .main-benefit-card:hover, .main-benefit-card.active {
-    background: #005FA0;
-    color: white;
+    background: #eeeeee;
+    color:#005FA0;
 }
-
-.main-benefit-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-
-
 
 .benefit-card-container {
     display: flex;
@@ -140,37 +133,258 @@ section.active {
     border-radius: 8px;
     padding: 10px;
     margin: 10px;
-    background: #FFFFFF;
+    background: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
-    box-shadow:  0 0 5px #005FA0;
+    box-shadow:  0 0 5px #eeeeee;
 }
 
 .benefit-card img {
     width: 130px;
     height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
+    border-radius: 5px;
+    object-fit: contain;
 }
 
 .benefit-card h3 {
     margin: 0;
     text-align: center;
+    color: #005FA0;
+}
+
+.job{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 37px;
+    border-left: 2px solid #005FA0;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -48px;
+    width: 15px;
+    height: 15px;
+    background-color: #005FA0;
+    border-radius: 50%;
+    border: 3px solid #eeeeee;
+}
+
+.institution {
+    font-size: 14px;
+    color: #777;
+}
+
+.date {
+    font-size: 12px;
+    color: #999;
+}
+
+
+.app-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.app-list li {
+    display: flex;
+    align-items: center;
+}
+
+.benefit-card .app-list .app-logo {
+    width: 80px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.benefit-card:hover h3 {
+    color: #b3b3b3;
 }
 
 .benefit-card:hover, .benefit-card.active {
-    background: #005FA0;
-    color: white;
+    background: #eeeeee;
+    color: #005FA0;
+}
+
+.benefit-card:hover, .benefit-card.active h3 {
+    color: #005FA0;
 }
 
 .benefit-details {
+    text-align: start;
     display: none;
     margin-top: 15px;
-    color: white;
+    color: #005FA0;
     font-size: 0.9rem;
 }
 
 .benefit-card.active .benefit-details {
     display: block;
+}
+
+@media (max-width: 768px) {
+    /* Ajustes generales */
+    body {
+        overflow: auto; /* Permitir scroll en móviles */
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    header img {
+        height: 40px; /* Reducir el tamaño del logo */
+    }
+
+    nav {
+        gap: 10px; /* Reducir el espacio entre enlaces */
+    }
+
+    nav a {
+        font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+        padding: 5px;
+    }
+
+    .main-content {
+        height: auto; /* Ajustar altura automáticamente */
+        padding-top: 80px; /* Espacio para el header fijo */
+    }
+
+    .image-container {
+        height: 50vh; /* Reducir la altura de la imagen */
+    }
+
+    .info-overlay {
+        top: 20%; /* Ajustar posición del texto */
+        width: 90%; /* Ajustar ancho */
+    }
+
+    footer {
+        position: static; /* Quitar posición fija en móviles */
+        padding: 20px 0;
+    }
+
+    .benefit-card-container {
+        flex-direction: column; /* Cambiar a disposición vertical */
+        align-items: center;
+    }
+
+    .benefit-card {
+        width: 90%; /* Ajustar ancho de las tarjetas */
+        margin: 10px 0;
+    }
+
+    .main-benefit-card {
+        width: 90%; /* Ajustar ancho de la tarjeta principal */
+    }
+
+    .timeline {
+        padding-left: 20px; /* Reducir el padding del timeline */
+    }
+
+    .timeline-item::before {
+        left: -28px; /* Ajustar posición de los puntos del timeline */
+    }
+
+
+
+    /* Ocultar el menú en móviles */
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav a {
+        color: #005FA0;
+        display: block;
+        padding: 10px;
+    }
+
+
+
+    /* ajustes para textos y tarjetas */
+    .info-overlay h1 {
+        font-size: 1.5rem; /* Reducir el tamaño del título */
+    }
+
+    .info-overlay p {
+        font-size: 0.9rem; /* Reducir el tamaño del texto */
+    }
+
+    .benefit-card h3 {
+        font-size: 1rem; /* Reducir el tamaño del título de la tarjeta */
+    }
+
+    .benefit-details {
+        font-size: 0.8rem; /* Reducir el tamaño del texto de los detalles */
+    }
+
+
+
+    /* ajustes para timelines */
+    .timeline {
+        padding-left: 15px; /* Reducir el padding */
+    }
+
+    .timeline-item::before {
+        left: -23px; /* Ajustar posición de los puntos */
+        width: 12px;
+        height: 12px;
+    }
+
+    .institution {
+        font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+    }
+
+    .date {
+        font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    }
+
+
+
+    /* ajustes para imagenes */
+    .image-container img {
+        height: auto; /* Ajustar altura automáticamente */
+    }
+
+    .benefit-card img {
+        width: 100px; /* Reducir el tamaño de las imágenes */
+        height: 100px;
+    }
+
+
+    /* ajustes para el footer */
+    footer {
+        color: #005FA0;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }
